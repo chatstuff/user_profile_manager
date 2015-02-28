@@ -13,44 +13,44 @@
 #     :socket    => '/tmp/mysql.sock'
 #   }
 #
-ActiveRecord::Base.configurations[:development] = {
-  :adapter   => 'mysql2',
-  :encoding  => 'utf8',
-  :reconnect => true,
-  :database  => 'user_profile_manager_development',
-  :pool      => 5,
-  :username  => 'root',
-  :password  => '',
-  :host      => 'localhost',
-  :socket    => '/tmp/mysql.sock'
-
-}
-
-ActiveRecord::Base.configurations[:production] = {
-  :adapter   => 'mysql2',
-  :encoding  => 'utf8',
-  :reconnect => true,
-  :database  => 'user_profile_manager_production',
-  :pool      => 5,
-  :username  => 'root',
-  :password  => '',
-  :host      => 'localhost',
-  :socket    => '/tmp/mysql.sock'
-
-}
-
-ActiveRecord::Base.configurations[:test] = {
-  :adapter   => 'mysql2',
-  :encoding  => 'utf8',
-  :reconnect => true,
-  :database  => 'user_profile_manager_test',
-  :pool      => 5,
-  :username  => 'root',
-  :password  => '',
-  :host      => 'localhost',
-  :socket    => '/tmp/mysql.sock'
-
-}
+# ActiveRecord::Base.configurations[:development] = {
+#   :adapter   => 'mysql2',
+#   :encoding  => 'utf8',
+#   :reconnect => true,
+#   :database  => 'user_profile_manager_development',
+#   :pool      => 5,
+#   :username  => 'root',
+#   :password  => '',
+#   :host      => 'localhost',
+#   :socket    => '/tmp/mysql.sock'
+# 
+# }
+# 
+# ActiveRecord::Base.configurations[:production] = {
+#   :adapter   => 'mysql2',
+#   :encoding  => 'utf8',
+#   :reconnect => true,
+#   :database  => 'user_profile_manager_production',
+#   :pool      => 5,
+#   :username  => 'root',
+#   :password  => '',
+#   :host      => 'localhost',
+#   :socket    => '/tmp/mysql.sock'
+# 
+# }
+# 
+# ActiveRecord::Base.configurations[:test] = {
+#   :adapter   => 'mysql2',
+#   :encoding  => 'utf8',
+#   :reconnect => true,
+#   :database  => 'user_profile_manager_test',
+#   :pool      => 5,
+#   :username  => 'root',
+#   :password  => '',
+#   :host      => 'localhost',
+#   :socket    => '/tmp/mysql.sock'
+# 
+# }
 
 # Setup our logger
 ActiveRecord::Base.logger = logger
@@ -78,7 +78,16 @@ ActiveSupport.use_standard_json_time_format = true
 ActiveSupport.escape_html_entities_in_json = false
 
 # Now we can establish connection with our db.
-ActiveRecord::Base.establish_connection(ActiveRecord::Base.configurations[Padrino.env])
+# ActiveRecord::Base.establish_connection(ActiveRecord::Base.configurations[Padrino.env])
+ActiveRecord::Base.establish_connection({
+  adapter: 'mysql2',
+  host:     ENV['WALLET_MANAGER_HOST'],
+  database: ENV['WALLET_MANAGER_DATABASE'],
+  username: ENV['WALLET_MANAGER_USER'],
+  password: ENV['WALLET_MANAGER_PASSWORD'],
+  pool: 10,
+  reconnect: true
+})
 
 # Timestamps are in the utc by default.
 ActiveRecord::Base.default_timezone = :utc
