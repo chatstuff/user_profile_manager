@@ -6,6 +6,7 @@ PADRINO_ROOT = File.expand_path('../..', __FILE__) unless defined?(PADRINO_ROOT)
 require 'rubygems' unless defined?(Gem)
 require 'bundler/setup'
 Bundler.require(:default, RACK_ENV)
+Dotenv.load ".env.#{Padrino.env}"
 
 ##
 # ## Enable devel logging
@@ -30,6 +31,19 @@ Bundler.require(:default, RACK_ENV)
 #   include Padrino::Helpers::NumberHelpers
 #   include Padrino::Helpers::TranslationHelpers
 # end
+
+# [:log_level] = {:fatal => 7,:error => 6,:warn => 4,:info  => 3,:debug => 0,:devel => -1}
+# [:stream] = :stdout # [:to_file, :null, :stdout, :stderr]
+# [:format_message] = '”%s - - [%s] "%s"“'
+# [:log_static] = false (Default)
+logger = File.open('/var/log/ola/user-profile.log', "a+")
+Padrino::Logger::Config.merge!({
+  # still have to figure out how to change file path
+    :development => {:log_level => :devel, :stream => logger, :format_datetime => " [%Y-%m-%d %H:%M:%S] ", :colorize_logging => true},
+    :test => {:log_level => :debug, :stream => logger, :format_datetime => " [%Y-%m-%d %H:%M:%S] ", :colorize_logging => false},
+    :staging => {:log_level => :debug, :stream => logger, :format_datetime => " [%Y-%m-%d %H:%M:%S] ", :colorize_logging => false},
+    :production => {:log_level => :debug, :stream => logger, :format_datetime => " [%Y-%m-%d %H:%M:%S] ", :colorize_logging => false}
+})
 
 ##
 # Add your before (RE)load hooks here

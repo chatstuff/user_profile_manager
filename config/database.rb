@@ -81,13 +81,14 @@ ActiveSupport.escape_html_entities_in_json = false
 # ActiveRecord::Base.establish_connection(ActiveRecord::Base.configurations[Padrino.env])
 ActiveRecord::Base.establish_connection({
   adapter: 'mysql2',
-  host:     ENV['WALLET_MANAGER_HOST'],
-  database: ENV['WALLET_MANAGER_DATABASE'],
-  username: ENV['WALLET_MANAGER_USER'],
-  password: ENV['WALLET_MANAGER_PASSWORD'],
+  host:     ENV['MYSQL_USER_PROFILE_HOST'],
+  database: ENV['MYSQL_USER_PROFILE_DATABASE'],
+  username: ENV['MYSQL_USER_PROFILE_USER'],
+  password: ENV['MYSQL_USER_PROFILE_PASSWORD'],
   pool: 10,
   reconnect: true
 })
 
 # Timestamps are in the utc by default.
 ActiveRecord::Base.default_timezone = :utc
+ActiveRecord::Base.record_timestamps = false

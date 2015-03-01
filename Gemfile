@@ -18,6 +18,7 @@ gem 'slim'
 gem 'activerecord', '>= 3.1', :require => 'active_record'
 gem 'mysql2'
 gem 'dotenv'
+#gem 'phony'
 
 # Test requirements
 
