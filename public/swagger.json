@@ -1,0 +1,130 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "API documentation for user profile service",
+        "title": "user_profile_manager",
+        "version": "1.0.0",
+        "contact": {
+            "email": "neerajkumaragarwal1990@gmail.com"
+        }
+    },
+    "host": "localhost:3001",
+    "basePath": "/",
+    "schemes": [
+        "http"
+    ],
+    "paths": {
+        "/user": {
+            "get": {
+                "summary": "gets you the user",
+                "description": "TBA",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "phone",
+                        "in": "query",
+                        "description": "Phone number of the user",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    }
+                }
+            },
+            "post": {
+                "summary": "creates a user",
+                "description": "TBA",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "phone",
+                        "in": "formData",
+                        "description": "Phone number of the user",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "public_name",
+                        "in": "formData",
+                        "description": "public name of the user",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "first_name",
+                        "in": "formData",
+                        "description": "first name of the user",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "last_name",
+                        "in": "formData",
+                        "description": "last name of the user",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "locality",
+                        "in": "formData",
+                        "description": "locality of the user",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "city",
+                        "in": "formData",
+                        "description": "city of the user",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "country",
+                        "in": "formData",
+                        "description": "country of the user",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "postal_code",
+                        "in": "formData",
+                        "description": "postal code of the user",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "email",
+                        "in": "formData",
+                        "description": "Phone number of the user",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    }
+                }
+            }
+        }
+    }
+}

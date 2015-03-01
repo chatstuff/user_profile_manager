@@ -3,7 +3,7 @@ module UserProfileManager
     use ConnectionPoolManagement
     register Padrino::Mailer
     register Padrino::Helpers
-
+    
     enable :sessions
 
     ##
@@ -62,5 +62,10 @@ module UserProfileManager
     #     render 'errors/500'
     #   end
     #
+    # class UserProfileManager::App
+    #   get '/' do
+    #     render 'Hello World'
+    #   end
+    # end
   end
 end

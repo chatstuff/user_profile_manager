@@ -22,7 +22,7 @@ Create Table: CREATE TABLE `users` (
     `city` varchar(50) DEFAULT NULL,
     `country` varchar(50) DEFAULT NULL,
     `postal_code` varchar(20) DEFAULT NULL,
-    `email` varchar(254) NOT NULL,
+    `email` varchar(254) DEFAULT NULL,
     `status` varchar(50) NOT NULL,
     `rating` int(11) unsigned DEFAULT '0',
     `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
