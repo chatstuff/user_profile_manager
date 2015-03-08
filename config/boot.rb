@@ -36,7 +36,7 @@ Dotenv.load ".env.#{Padrino.env}"
 # [:stream] = :stdout # [:to_file, :null, :stdout, :stderr]
 # [:format_message] = '”%s - - [%s] "%s"“'
 # [:log_static] = false (Default)
-logger = File.open('/var/log/ola/user-profile.log', "a+")
+logger = File.open('/var/log/user-profile.log', "a+")
 Padrino::Logger::Config.merge!({
   # still have to figure out how to change file path
     :development => {:log_level => :devel, :stream => logger, :format_datetime => " [%Y-%m-%d %H:%M:%S] ", :colorize_logging => true},
